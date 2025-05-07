@@ -21,15 +21,31 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    /**
+     * Method to save a customer in db
+     * @param customer
+     * @return
+     */
     @PostMapping("/save")
     public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer){
         Customer customerSaved = customerService.saveCustomer(customer);
         return new ResponseEntity<Customer>(customerSaved, HttpStatus.CREATED);
     }
 
+    /**
+     * Method to list all the customers in the db
+     * @return
+     */
     @GetMapping("/getAll")
     public ResponseEntity<List<Customer>> getAllCustomers(){
         List<Customer> customerList = customerService.listCustomers();
         return new ResponseEntity<List<Customer>>(customerList, HttpStatus.OK);
+    }
+
+    /**
+     * Method to get one customer by the Id
+     */
+    public void getCustomerById(){
+
     }
 }
